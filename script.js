@@ -1,8 +1,8 @@
 // ===============================
-// CHANGE THIS TO YOUR DISCORD
+// SETTINGS
 // ===============================
 
-const DISCORD_USERNAME = "yourusername";
+const DISCORD_USERNAME = "nicht_rali";
 
 
 // ===============================
@@ -12,24 +12,21 @@ const DISCORD_USERNAME = "yourusername";
 const menuButton = document.getElementById("menuButton");
 const mobileMenu = document.getElementById("mobileMenu");
 
-menuButton.addEventListener("click", () => {
+if (menuButton && mobileMenu) {
 
-    mobileMenu.classList.toggle("open");
+    menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+    });
 
-});
+    document.querySelectorAll(".mobile-menu a").forEach(link => {
 
-
-// Close mobile menu after clicking a link
-
-document.querySelectorAll(".mobile-menu a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        mobileMenu.classList.remove("open");
+        link.addEventListener("click", () => {
+            mobileMenu.classList.remove("open");
+        });
 
     });
 
-});
+}
 
 
 // ===============================
@@ -50,19 +47,16 @@ function setupDiscordButton(buttonId, iconId, copiedId) {
                 DISCORD_USERNAME
             );
 
-            document.getElementById(iconId).style.display =
-                "none";
+            const icon = document.getElementById(iconId);
+            const copied = document.getElementById(copiedId);
 
-            document.getElementById(copiedId).style.display =
-                "inline";
+            if (icon) icon.style.display = "none";
+            if (copied) copied.style.display = "inline";
 
             setTimeout(() => {
 
-                document.getElementById(iconId).style.display =
-                    "inline";
-
-                document.getElementById(copiedId).style.display =
-                    "none";
+                if (icon) icon.style.display = "inline";
+                if (copied) copied.style.display = "none";
 
             }, 1000);
 
@@ -86,20 +80,20 @@ setupDiscordButton(
     "discordCopied"
 );
 
-
 setupDiscordButton(
     "discordButton2",
     "discordIcon2",
     "discordCopied2"
 );
 
+
 // ===============================
 // MULTI-LANGUAGE GREETING
 // ===============================
 
 const greetings = [
-    "Hallo",
     "Hello",
+    "Hallo",
     "Bonjour",
     "Hola",
     "Ciao",
@@ -107,37 +101,51 @@ const greetings = [
     "こんにちは",
     "안녕하세요",
     "你好",
-    "Привет",
-]
+    "Привет"
+];
 
-const greetingElement = document.getElementById("greeting")
+const greetingElement =
+    document.getElementById("greeting");
 
-let greetingIndex = 0
+if (greetingElement) {
 
-function changeGreeting() {
+    let greetingIndex = 0;
 
-    greetingElement.classList.add("greeting-out")
+    function changeGreeting() {
 
-    setTimeout(() => {
-
-        greetingIndex++
-
-        if (greetingIndex >= greetings.length) {
-            greetingIndex = 0
-        }
-
-        greetingElement.textContent =
-            greetings[greetingIndex]
-
-        greetingElement.classList.remove("greeting-out")
-
-        greetingElement.classList.add("greeting-in")
+        greetingElement.classList.add(
+            "greeting-out"
+        );
 
         setTimeout(() => {
-            greetingElement.classList.remove("greeting-in")
-        }, 500)
 
-    }, 350)
+            greetingIndex++;
+
+            if (greetingIndex >= greetings.length) {
+                greetingIndex = 0;
+            }
+
+            greetingElement.textContent =
+                greetings[greetingIndex];
+
+            greetingElement.classList.remove(
+                "greeting-out"
+            );
+
+            greetingElement.classList.add(
+                "greeting-in"
+            );
+
+            setTimeout(() => {
+
+                greetingElement.classList.remove(
+                    "greeting-in"
+                );
+
+            }, 500);
+
+        }, 350);
+    }
+
+    setInterval(changeGreeting, 2200);
 }
-
-setInterval(changeGreeting, 2200)

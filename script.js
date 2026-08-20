@@ -92,3 +92,52 @@ setupDiscordButton(
     "discordIcon2",
     "discordCopied2"
 );
+
+// ===============================
+// MULTI-LANGUAGE GREETING
+// ===============================
+
+const greetings = [
+    "Hallo",
+    "Hello",
+    "Bonjour",
+    "Hola",
+    "Ciao",
+    "Olá",
+    "こんにちは",
+    "안녕하세요",
+    "你好",
+    "Привет",
+]
+
+const greetingElement = document.getElementById("greeting")
+
+let greetingIndex = 0
+
+function changeGreeting() {
+
+    greetingElement.classList.add("greeting-out")
+
+    setTimeout(() => {
+
+        greetingIndex++
+
+        if (greetingIndex >= greetings.length) {
+            greetingIndex = 0
+        }
+
+        greetingElement.textContent =
+            greetings[greetingIndex]
+
+        greetingElement.classList.remove("greeting-out")
+
+        greetingElement.classList.add("greeting-in")
+
+        setTimeout(() => {
+            greetingElement.classList.remove("greeting-in")
+        }, 500)
+
+    }, 350)
+}
+
+setInterval(changeGreeting, 2200)

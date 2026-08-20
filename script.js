@@ -93,6 +93,10 @@ setupDiscordButton(
     "discordCopied2"
 );
 
+// ===============================
+// MULTI-LANGUAGE GREETING
+// ===============================
+
 const greetings = [
     "Hallo",
     "Hello",

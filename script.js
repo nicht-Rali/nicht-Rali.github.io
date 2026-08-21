@@ -9,22 +9,33 @@ const DISCORD_USERNAME = "nicht_rali";
 // MOBILE MENU
 // ===============================
 
-const menuButton = document.getElementById("menuButton");
-const mobileMenu = document.getElementById("mobileMenu");
+const menuButton =
+    document.getElementById("menuButton");
+
+const mobileMenu =
+    document.getElementById("mobileMenu");
+
 
 if (menuButton && mobileMenu) {
 
     menuButton.addEventListener("click", () => {
+
         mobileMenu.classList.toggle("open");
+
     });
 
-    document.querySelectorAll(".mobile-menu a").forEach(link => {
 
-        link.addEventListener("click", () => {
-            mobileMenu.classList.remove("open");
+    document
+        .querySelectorAll(".mobile-menu a")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                mobileMenu.classList.remove("open");
+
+            });
+
         });
-
-    });
 
 }
 
@@ -33,43 +44,69 @@ if (menuButton && mobileMenu) {
 // DISCORD COPY
 // ===============================
 
-function setupDiscordButton(buttonId, iconId, copiedId) {
+function setupDiscordButton(
+    buttonId,
+    iconId,
+    copiedId
+) {
 
-    const button = document.getElementById(buttonId);
+    const button =
+        document.getElementById(buttonId);
 
     if (!button) return;
 
-    button.addEventListener("click", async () => {
 
-        try {
+    button.addEventListener(
+        "click",
+        async () => {
 
-            await navigator.clipboard.writeText(
-                DISCORD_USERNAME
-            );
+            try {
 
-            const icon = document.getElementById(iconId);
-            const copied = document.getElementById(copiedId);
+                await navigator.clipboard.writeText(
+                    DISCORD_USERNAME
+                );
 
-            if (icon) icon.style.display = "none";
-            if (copied) copied.style.display = "inline";
 
-            setTimeout(() => {
+                const icon =
+                    document.getElementById(iconId);
 
-                if (icon) icon.style.display = "inline";
-                if (copied) copied.style.display = "none";
+                const copied =
+                    document.getElementById(copiedId);
 
-            }, 1000);
 
-        } catch (error) {
+                if (icon) {
+                    icon.style.display = "none";
+                }
 
-            console.error(
-                "Failed to copy Discord username:",
-                error
-            );
+                if (copied) {
+                    copied.style.display = "inline";
+                }
+
+
+                setTimeout(() => {
+
+                    if (icon) {
+                        icon.style.display = "inline";
+                    }
+
+                    if (copied) {
+                        copied.style.display = "none";
+                    }
+
+                }, 1200);
+
+
+            } catch (error) {
+
+                console.error(
+                    "Failed to copy Discord username:",
+                    error
+                );
+
+            }
 
         }
-
-    });
+    );
 
 }
 
@@ -80,6 +117,7 @@ setupDiscordButton(
     "discordCopied"
 );
 
+
 setupDiscordButton(
     "discordButton2",
     "discordIcon2",
@@ -88,10 +126,83 @@ setupDiscordButton(
 
 
 // ===============================
+// CURSOR GLOW
+// ===============================
+
+const cursorGlow =
+    document.querySelector(".cursor-glow");
+
+
+if (cursorGlow) {
+
+    document.addEventListener(
+        "mousemove",
+        event => {
+
+            cursorGlow.style.left =
+                `${event.clientX}px`;
+
+            cursorGlow.style.top =
+                `${event.clientY}px`;
+
+        }
+    );
+
+}
+
+
+// ===============================
+// SCROLL REVEAL
+// ===============================
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+if (revealElements.length) {
+
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+}
+
+
+// ===============================
 // MULTI-LANGUAGE GREETING
 // ===============================
 
 const greetings = [
+
     "Hello",
     "Hallo",
     "Bonjour",
@@ -102,14 +213,18 @@ const greetings = [
     "안녕하세요",
     "你好",
     "Привет"
+
 ];
+
 
 const greetingElement =
     document.getElementById("greeting");
 
+
 if (greetingElement) {
 
     let greetingIndex = 0;
+
 
     function changeGreeting() {
 
@@ -117,24 +232,35 @@ if (greetingElement) {
             "greeting-out"
         );
 
+
         setTimeout(() => {
 
             greetingIndex++;
 
-            if (greetingIndex >= greetings.length) {
+
+            if (
+                greetingIndex >=
+                greetings.length
+            ) {
+
                 greetingIndex = 0;
+
             }
+
 
             greetingElement.textContent =
                 greetings[greetingIndex];
+
 
             greetingElement.classList.remove(
                 "greeting-out"
             );
 
+
             greetingElement.classList.add(
                 "greeting-in"
             );
+
 
             setTimeout(() => {
 
@@ -144,8 +270,15 @@ if (greetingElement) {
 
             }, 500);
 
+
         }, 350);
+
     }
 
-    setInterval(changeGreeting, 2200);
+
+    setInterval(
+        changeGreeting,
+        2200
+    );
+
 }

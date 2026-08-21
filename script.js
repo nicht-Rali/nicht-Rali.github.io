@@ -113,21 +113,14 @@ revealElements.forEach(element => revealObserver.observe(element));
 const cursorGlow = document.querySelector(".cursor-glow");
 
 if (cursorGlow) {
-    let mouseX = 0, mouseY = 0;
-    let glowX = 0, glowY = 0;
 
     document.addEventListener("mousemove", (event) => {
-        mouseX = event.clientX;
-        mouseY = event.clientY;
+
+        cursorGlow.style.left = `${event.clientX}px`;
+        cursorGlow.style.top = `${event.clientY}px`;
+
     });
 
-    function animateCursor() {
-       cursorGlow.style.left = `${mouseX}px`;
-        cursorGlow.style.top = `${mouseY}px`;
-        requestAnimationFrame(animateCursor);
-    }
-
-    animateCursor();
 }
 
 // ===============================

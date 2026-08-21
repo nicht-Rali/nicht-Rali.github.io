@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,30 +15,35 @@
 
 <body>
 
-    <!-- CURSOR GLOW -->
+    <!-- =========================
+         CURSOR GLOW
+    ========================== -->
 
     <div class="cursor-glow"></div>
 
 
-    <!-- NAVBAR -->
+    <!-- =========================
+         NAVBAR
+    ========================== -->
 
     <header class="navbar">
 
-        <a href="index.html" class="logo">
+        <a href="#home" class="logo">
             Rali
         </a>
 
+
         <nav>
 
-            <a href="index.html" class="active">
+            <a href="#home" class="active">
                 Home
             </a>
 
-            <a href="projects.html">
+            <a href="#projects">
                 Projects
             </a>
 
-            <a href="planner.html">
+            <a href="#planner">
                 Planner
             </a>
 
@@ -47,9 +53,11 @@
 
         </nav>
 
+
         <button
             class="menu-button"
             id="menuButton"
+            aria-label="Open menu"
         >
             ☰
         </button>
@@ -57,22 +65,24 @@
     </header>
 
 
-    <!-- MOBILE MENU -->
+    <!-- =========================
+         MOBILE MENU
+    ========================== -->
 
     <div
         class="mobile-menu"
         id="mobileMenu"
     >
 
-        <a href="index.html">
+        <a href="#home">
             Home
         </a>
 
-        <a href="projects.html">
+        <a href="#projects">
             Projects
         </a>
 
-        <a href="planner.html">
+        <a href="#planner">
             Planner
         </a>
 
@@ -86,11 +96,17 @@
     <main>
 
 
-        <!-- HERO -->
+        <!-- =========================
+             HERO
+        ========================== -->
 
-        <section class="hero">
+        <section
+            class="hero"
+            id="home"
+        >
 
             <div class="hero-content reveal">
+
 
                 <div class="status">
 
@@ -127,11 +143,11 @@
                 <div class="hero-buttons">
 
                     <a
-                        href="projects.html"
+                        href="#projects"
                         class="button primary"
                     >
                         View my work
-                        <span>↗</span>
+                        <span>↓</span>
                     </a>
 
 
@@ -202,7 +218,102 @@
         </section>
 
 
-        <!-- ABOUT -->
+
+        <!-- =========================
+             PROJECTS
+        ========================== -->
+
+        <section
+            class="section projects"
+            id="projects"
+        >
+
+            <div class="section-header reveal">
+
+                <span>
+                    // PROJECTS
+                </span>
+
+                <h2>
+                    Selected Work
+                </h2>
+
+                <p>
+                    Projects I'm currently working on
+                    and experiences I've built.
+                </p>
+
+            </div>
+
+
+            <div class="project-card reveal">
+
+                <div class="project-image">
+
+                    <img
+                        src="images/project.png"
+                        alt="Escape the Giant"
+                    >
+
+                </div>
+
+
+                <div class="project-info">
+
+                    <div class="project-status">
+
+                        <span></span>
+
+                        IN DEVELOPMENT
+
+                    </div>
+
+
+                    <h3>
+                        Escape the Giant
+                    </h3>
+
+
+                    <p>
+                        Currently in development.
+                    </p>
+
+
+                    <div class="project-category">
+
+                        Lead Scripter
+
+                        <br>
+
+                        Responsible for the majority of the
+                        game's programming, gameplay systems
+                        and core mechanics.
+
+                    </div>
+
+
+                    <div class="project-actions">
+
+                        <a
+                            href="#"
+                            class="text-link"
+                        >
+                            View Project →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
 
         <section
             class="section"
@@ -227,6 +338,7 @@
 
 
             <div class="about-grid">
+
 
                 <div class="reveal">
 
@@ -256,17 +368,29 @@
 
                     <div class="skills">
 
-                        <span>Luau</span>
+                        <span>
+                            Luau
+                        </span>
 
-                        <span>Roblox Studio</span>
+                        <span>
+                            Roblox Studio
+                        </span>
 
-                        <span>Gameplay Programming</span>
+                        <span>
+                            Gameplay Programming
+                        </span>
 
-                        <span>Systems</span>
+                        <span>
+                            Systems
+                        </span>
 
-                        <span>Game Mechanics</span>
+                        <span>
+                            Game Mechanics
+                        </span>
 
-                        <span>Scripting</span>
+                        <span>
+                            Scripting
+                        </span>
 
                     </div>
 
@@ -277,7 +401,10 @@
         </section>
 
 
-        <!-- SERVICES -->
+
+        <!-- =========================
+             SERVICES
+        ========================== -->
 
         <section
             class="section"
@@ -391,13 +518,73 @@
 
                 </div>
 
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PLANNER
+        ========================== -->
+
+        <section
+            class="section planner"
+            id="planner"
+        >
+
+            <div class="section-header reveal">
+
+                <span>
+                    // PLANNER
+                </span>
+
+                <h2>
+                    Project Planner
+                </h2>
+
+                <p>
+                    Plan your Roblox project and estimate
+                    the cost of development.
+                </p>
+
+            </div>
+
+
+            <div class="planner-container reveal">
+
+                <!--
+                    Planner will be added here.
+                    We will build the calculator
+                    separately in the next step.
+                -->
+
+                <div class="planner-placeholder">
+
+                    <span>
+                        PROJECT PLANNER
+                    </span>
+
+                    <h3>
+                        Coming soon.
+                    </h3>
+
+                    <p>
+                        Choose services and build
+                        your project estimate.
+                    </p>
+
+                </div>
 
             </div>
 
         </section>
 
 
-        <!-- CONTACT -->
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
 
         <section
             class="section contact reveal"
@@ -449,6 +636,7 @@
                 <a
                     href="https://www.roblox.com/users/3404609836/profile"
                     target="_blank"
+                    rel="noopener noreferrer"
                     class="button primary"
                 >
                     Roblox Profile ↗
@@ -463,7 +651,10 @@
     </main>
 
 
-    <!-- FOOTER -->
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
     <footer>
 
@@ -478,8 +669,14 @@
     </footer>
 
 
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
     <script src="script.js"></script>
 
 </body>
 
 </html>
+```

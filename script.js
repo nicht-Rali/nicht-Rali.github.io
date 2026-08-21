@@ -1,3 +1,4 @@
+```javascript
 // ===============================
 // SETTINGS
 // ===============================
@@ -9,19 +10,13 @@ const DISCORD_USERNAME = "nicht_rali";
 // MOBILE MENU
 // ===============================
 
-const menuButton =
-    document.getElementById("menuButton");
-
-const mobileMenu =
-    document.getElementById("mobileMenu");
-
+const menuButton = document.getElementById("menuButton");
+const mobileMenu = document.getElementById("mobileMenu");
 
 if (menuButton && mobileMenu) {
 
     menuButton.addEventListener("click", () => {
-
         mobileMenu.classList.toggle("open");
-
     });
 
 
@@ -30,9 +25,7 @@ if (menuButton && mobileMenu) {
         .forEach(link => {
 
             link.addEventListener("click", () => {
-
                 mobileMenu.classList.remove("open");
-
             });
 
         });
@@ -44,69 +37,62 @@ if (menuButton && mobileMenu) {
 // DISCORD COPY
 // ===============================
 
-function setupDiscordButton(
-    buttonId,
-    iconId,
-    copiedId
-) {
+function setupDiscordButton(buttonId, iconId, copiedId) {
 
-    const button =
-        document.getElementById(buttonId);
+    const button = document.getElementById(buttonId);
 
     if (!button) return;
 
 
-    button.addEventListener(
-        "click",
-        async () => {
+    button.addEventListener("click", async () => {
 
-            try {
+        try {
 
-                await navigator.clipboard.writeText(
-                    DISCORD_USERNAME
-                );
+            await navigator.clipboard.writeText(
+                DISCORD_USERNAME
+            );
 
 
-                const icon =
-                    document.getElementById(iconId);
+            const icon =
+                document.getElementById(iconId);
 
-                const copied =
-                    document.getElementById(copiedId);
+            const copied =
+                document.getElementById(copiedId);
 
+
+            if (icon) {
+                icon.style.display = "none";
+            }
+
+
+            if (copied) {
+                copied.style.display = "inline";
+            }
+
+
+            setTimeout(() => {
 
                 if (icon) {
-                    icon.style.display = "none";
+                    icon.style.display = "inline";
                 }
 
                 if (copied) {
-                    copied.style.display = "inline";
+                    copied.style.display = "none";
                 }
 
-
-                setTimeout(() => {
-
-                    if (icon) {
-                        icon.style.display = "inline";
-                    }
-
-                    if (copied) {
-                        copied.style.display = "none";
-                    }
-
-                }, 1200);
+            }, 1500);
 
 
-            } catch (error) {
+        } catch (error) {
 
-                console.error(
-                    "Failed to copy Discord username:",
-                    error
-                );
-
-            }
+            console.error(
+                "Failed to copy Discord username:",
+                error
+            );
 
         }
-    );
+
+    });
 
 }
 
@@ -123,78 +109,6 @@ setupDiscordButton(
     "discordIcon2",
     "discordCopied2"
 );
-
-
-// ===============================
-// CURSOR GLOW
-// ===============================
-
-const cursorGlow =
-    document.querySelector(".cursor-glow");
-
-
-if (cursorGlow) {
-
-    document.addEventListener(
-        "mousemove",
-        event => {
-
-            cursorGlow.style.left =
-                `${event.clientX}px`;
-
-            cursorGlow.style.top =
-                `${event.clientY}px`;
-
-        }
-    );
-
-}
-
-
-// ===============================
-// SCROLL REVEAL
-// ===============================
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-
-if (revealElements.length) {
-
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.12
-            }
-        );
-
-
-    revealElements.forEach(element => {
-
-        revealObserver.observe(element);
-
-    });
-
-}
 
 
 // ===============================
@@ -239,8 +153,7 @@ if (greetingElement) {
 
 
             if (
-                greetingIndex >=
-                greetings.length
+                greetingIndex >= greetings.length
             ) {
 
                 greetingIndex = 0;
@@ -282,3 +195,214 @@ if (greetingElement) {
     );
 
 }
+
+
+// ===============================
+// SCROLL REVEAL
+// ===============================
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12,
+
+            rootMargin:
+                "0px 0px -50px 0px"
+        }
+
+    );
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+// ===============================
+// CURSOR GLOW
+// ===============================
+
+const cursorGlow =
+    document.querySelector(".cursor-glow");
+
+
+if (cursorGlow) {
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let glowX = 0;
+    let glowY = 0;
+
+
+    document.addEventListener(
+        "mousemove",
+        (event) => {
+
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+
+        }
+    );
+
+
+    function animateCursor() {
+
+        glowX +=
+            (mouseX - glowX) * 0.12;
+
+        glowY +=
+            (mouseY - glowY) * 0.12;
+
+
+        cursorGlow.style.transform =
+            `translate3d(${glowX}px, ${glowY}px, 0)`;
+
+
+        requestAnimationFrame(
+            animateCursor
+        );
+
+    }
+
+
+    animateCursor();
+
+}
+
+
+// ===============================
+// CURSOR INTERACTION
+// ===============================
+
+const interactiveElements =
+    document.querySelectorAll(
+        "a, button, .service-card, .project-card"
+    );
+
+
+interactiveElements.forEach(element => {
+
+    element.addEventListener(
+        "mouseenter",
+        () => {
+
+            document.body.classList.add(
+                "cursor-active"
+            );
+
+        }
+    );
+
+
+    element.addEventListener(
+        "mouseleave",
+        () => {
+
+            document.body.classList.remove(
+                "cursor-active"
+            );
+
+        }
+    );
+
+});
+
+
+// ===============================
+// ACTIVE NAVIGATION
+// ===============================
+
+const sections =
+    document.querySelectorAll(
+        "main section[id]"
+    );
+
+
+const navLinks =
+    document.querySelectorAll(
+        ".navbar nav a"
+    );
+
+
+const sectionObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    navLinks.forEach(link => {
+
+                        link.classList.remove(
+                            "active"
+                        );
+
+
+                        if (
+                            link.getAttribute("href")
+                            === `#${entry.target.id}`
+                        ) {
+
+                            link.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.45
+        }
+
+    );
+
+
+sections.forEach(section => {
+
+    sectionObserver.observe(
+        section
+    );
+
+});
+```

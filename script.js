@@ -122,12 +122,8 @@ if (cursorGlow) {
     });
 
     function animateCursor() {
-        glowX += (mouseX - glowX) * 0.12;
-        glowY += (mouseY - glowY) * 0.12;
-
-        cursorGlow.style.left = `${glowX}px`;
-        cursorGlow.style.top = `${glowY}px`;
-
+       cursorGlow.style.left = `${mouseX}px`;
+        cursorGlow.style.top = `${mouseY}px`;
         requestAnimationFrame(animateCursor);
     }
 

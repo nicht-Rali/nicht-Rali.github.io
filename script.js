@@ -116,8 +116,8 @@ if (cursorGlow) {
 
     document.addEventListener("mousemove", (event) => {
 
-        cursorGlow.style.left = `${event.clientX}px`;
-        cursorGlow.style.top = `${event.clientY}px`;
+        cursorGlow.style.transform =
+            `translate(${event.clientX}px, ${event.clientY}px) translate(-50%, -50%)`;
 
     });
 

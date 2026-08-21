@@ -44,25 +44,25 @@ a {
     left: 0;
     top: 0;
 
-    width: 260px;
-    height: 260px;
+    width: 320px;
+    height: 320px;
 
     border-radius: 50%;
 
     pointer-events: none;
-
     z-index: 1;
 
     background: radial-gradient(
         circle,
-        rgba(255, 255, 255, 0.075) 0%,
-        rgba(255, 255, 255, 0.025) 35%,
-        transparent 70%
+        rgba(255, 255, 255, 0.16) 0%,
+        rgba(255, 255, 255, 0.07) 30%,
+        rgba(255, 255, 255, 0.025) 50%,
+        transparent 72%
     );
 
-    filter: blur(10px);
+    filter: blur(8px);
 
-    opacity: 0.8;
+    opacity: 1;
 
     transform:
         translate(0px, 0px)
@@ -70,14 +70,12 @@ a {
 
     transition:
         width 0.25s ease,
-        height 0.25s ease,
-        opacity 0.25s ease;
+        height 0.25s ease;
 }
 
 body.cursor-active .cursor-glow {
-    width: 340px;
-    height: 340px;
-    opacity: 1;
+    width: 400px;
+    height: 400px;
 }
 
 

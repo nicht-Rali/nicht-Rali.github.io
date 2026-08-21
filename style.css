@@ -41,13 +41,11 @@ a {
 .cursor-glow {
     position: fixed;
 
-    width: 260px;
-    height: 260px;
-
     left: 0;
     top: 0;
 
-    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 260px;
 
     border-radius: 50%;
 
@@ -59,12 +57,16 @@ a {
         circle,
         rgba(255, 255, 255, 0.075) 0%,
         rgba(255, 255, 255, 0.025) 35%,
-        transparent 40%
+        transparent 70%
     );
 
     filter: blur(10px);
 
     opacity: 0.8;
+
+    transform:
+        translate(0px, 0px)
+        translate(-50%, -50%);
 
     transition:
         width 0.25s ease,

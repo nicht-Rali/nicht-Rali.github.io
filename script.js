@@ -251,9 +251,7 @@ revealElements.forEach(element => {
 // CURSOR GLOW
 // ===============================
 
-const cursorGlow =
-    document.querySelector(".cursor-glow");
-
+const cursorGlow = document.querySelector(".cursor-glow");
 
 if (cursorGlow) {
 
@@ -263,41 +261,24 @@ if (cursorGlow) {
     let glowX = 0;
     let glowY = 0;
 
+    document.addEventListener("mousemove", function(event) {
 
-    document.addEventListener(
-        "mousemove",
-        (event) => {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
 
-            mouseX = event.clientX;
-            mouseY = event.clientY;
-
-        }
-    );
-
+    });
 
     function animateCursor() {
 
-        glowX +=
-            (mouseX - glowX) * 0.12;
+        glowX += (mouseX - glowX) * 0.12;
+        glowY += (mouseY - glowY) * 0.12;
 
-        glowY +=
-            (mouseY - glowY) * 0.12;
+        cursorGlow.style.left = glowX + "px";
+        cursorGlow.style.top = glowY + "px";
 
-
-        cursorGlow.style.transform =
-    "translate3d(" +
-    glowX +
-    "px, " +
-    glowY +
-    "px, 0)";
-
-
-        requestAnimationFrame(
-            animateCursor
-        );
+        requestAnimationFrame(animateCursor);
 
     }
-
 
     animateCursor();
 

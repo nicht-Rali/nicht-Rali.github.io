@@ -285,7 +285,11 @@ if (cursorGlow) {
 
 
         cursorGlow.style.transform =
-            `translate3d(${glowX}px, ${glowY}px, 0)`;
+    "translate3d(" +
+    glowX +
+    "px, " +
+    glowY +
+    "px, 0)";
 
 
         requestAnimationFrame(

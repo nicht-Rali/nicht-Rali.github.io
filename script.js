@@ -1,164 +1,584 @@
-// ===============================
-// SETTINGS
-// ===============================
+<!DOCTYPE html>
 
-const DISCORD_USERNAME = "nicht_rali";
+<html lang="en">
 
-// ===============================
-// MOBILE MENU
-// ===============================
+<head>
 
-const menuButton = document.getElementById("menuButton");
-const mobileMenu = document.getElementById("mobileMenu");
+```
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-if (menuButton && mobileMenu) {
-    menuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("open");
-    });
+<title>Rali | Roblox Developer</title>
 
-    document.querySelectorAll(".mobile-menu a").forEach(link => {
-        link.addEventListener("click", () => {
-            mobileMenu.classList.remove("open");
-        });
-    });
-}
+<link rel="stylesheet" href="style.css">
+```
 
-// ===============================
-// DISCORD COPY
-// ===============================
+</head>
 
-function setupDiscordButton(buttonId, iconId, copiedId) {
-    const button = document.getElementById(buttonId);
-    if (!button) return;
+<body>
 
-    button.addEventListener("click", async () => {
-        try {
-            await navigator.clipboard.writeText(DISCORD_USERNAME);
+```
+<!-- CURSOR GLOW -->
 
-            const icon = document.getElementById(iconId);
-            const copied = document.getElementById(copiedId);
+<div class="cursor-glow"></div>
 
-            if (icon) icon.style.display = "none";
-            if (copied) copied.style.display = "inline";
 
-            setTimeout(() => {
-                if (icon) icon.style.display = "inline";
-                if (copied) copied.style.display = "none";
-            }, 1500);
-        } catch (error) {
-            console.error("Failed to copy Discord username:", error);
-        }
-    });
-}
+<!-- NAVBAR -->
 
-setupDiscordButton("discordButton", "discordIcon", "discordCopied");
-setupDiscordButton("discordButton2", "discordIcon2", "discordCopied2");
+<header class="navbar">
 
-// ===============================
-// MULTI-LANGUAGE GREETING
-// ===============================
+    <a href="index.html" class="logo">
+        Rali
+    </a>
 
-const greetings = [
-    "Hello", "Hallo", "Bonjour", "Hola", "Ciao",
-    "Olá", "こんにちは", "안녕하세요", "你好", "Привет"
-];
+    <nav>
 
-const greetingElement = document.getElementById("greeting");
+        <a href="index.html" class="active">
+            Home
+        </a>
 
-if (greetingElement) {
-    let greetingIndex = 0;
+        <a href="projects.html">
+            Projects
+        </a>
 
-    function changeGreeting() {
-        greetingElement.classList.add("greeting-out");
+        <a href="planner.html">
+            Planner
+        </a>
 
-        setTimeout(() => {
-            greetingIndex = (greetingIndex + 1) % greetings.length;
-            greetingElement.textContent = greetings[greetingIndex];
-            greetingElement.classList.remove("greeting-out");
-            greetingElement.classList.add("greeting-in");
+        <a href="#vfx">
+            VFX
+        </a>
 
-            setTimeout(() => {
-                greetingElement.classList.remove("greeting-in");
-            }, 500);
-        }, 350);
-    }
+        <a href="#contact">
+            Contact
+        </a>
 
-    setInterval(changeGreeting, 2200);
-}
+    </nav>
 
-// ===============================
-// SCROLL REVEAL
-// ===============================
+    <button
+        class="menu-button"
+        id="menuButton"
+    >
+        ☰
+    </button>
 
-const revealElements = document.querySelectorAll(".reveal");
+</header>
 
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-        }
-    });
-}, {
-    threshold: 0.12,
-    rootMargin: "0px 0px -50px 0px"
-});
 
-revealElements.forEach(element => revealObserver.observe(element));
+<!-- MOBILE MENU -->
 
-// ===============================
-// CURSOR GLOW
-// ===============================
+<div
+    class="mobile-menu"
+    id="mobileMenu"
+>
 
-const cursorGlow = document.querySelector(".cursor-glow");
+    <a href="index.html">
+        Home
+    </a>
 
-if (cursorGlow) {
+    <a href="projects.html">
+        Projects
+    </a>
 
-    document.addEventListener("mousemove", (event) => {
+    <a href="planner.html">
+        Planner
+    </a>
 
-        cursorGlow.style.transform =
-            `translate(${event.clientX}px, ${event.clientY}px) translate(-50%, -50%)`;
+    <a href="#vfx">
+        VFX
+    </a>
 
-    });
+    <a href="#contact">
+        Contact
+    </a>
 
-}
+</div>
 
-// ===============================
-// CURSOR INTERACTION
-// ===============================
 
-const interactiveElements = document.querySelectorAll("a, button, .service-card, .project-card");
+<main>
 
-interactiveElements.forEach(element => {
-    element.addEventListener("mouseenter", () => {
-        document.body.classList.add("cursor-active");
-    });
 
-    element.addEventListener("mouseleave", () => {
-        document.body.classList.remove("cursor-active");
-    });
-});
+    <!-- HERO -->
 
-// ===============================
-// ACTIVE NAVIGATION
-// ===============================
+    <section class="hero">
 
-const sections = document.querySelectorAll("main section[id]");
-const navLinks = document.querySelectorAll(".navbar nav a");
+        <div class="hero-content reveal">
 
-const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            navLinks.forEach(link => {
-                link.classList.remove("active");
-                if (link.getAttribute("href") === `#${entry.target.id}`) {
-                    link.classList.add("active");
-                }
-            });
-        }
-    });
-}, {
-    threshold: 0.45
-});
+            <div class="status">
 
-sections.forEach(section => sectionObserver.observe(section));
+                <span></span>
+
+                ROBLOX DEVELOPER
+
+            </div>
+
+
+            <h1 class="hero-title">
+
+                <span id="greeting">
+                    Hello
+                </span>,
+
+                I'm
+
+                <span>
+                    Rali.
+                </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                I build gameplay systems, mechanics and
+                experiences in Roblox.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="projects.html"
+                    class="button primary"
+                >
+                    View my work
+                    <span>↗</span>
+                </a>
+
+
+                <button
+                    class="button secondary"
+                    id="discordButton"
+                >
+
+                    <span id="discordIcon">
+                        Copy Discord
+                    </span>
+
+                    <span id="discordCopied">
+                        Copied!
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- STATS -->
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <strong>
+                        4+
+                    </strong>
+
+                    <span>
+                        Years Experience
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        4.5K+
+                    </strong>
+
+                    <span>
+                        Total Visits
+                    </span>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <strong>
+                        1
+                    </strong>
+
+                    <span>
+                        Upcoming Project
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section
+        class="section"
+        id="about"
+    >
+
+        <div class="section-header reveal">
+
+            <span>
+                // ABOUT
+            </span>
+
+            <h2>
+                About Me
+            </h2>
+
+            <p>
+                A little bit about who I am and what I do.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="reveal">
+
+                <p class="about-text">
+
+                    I'm Rali, a Roblox developer with 4+
+                    years of experience focused on gameplay
+                    programming, systems and game mechanics.
+
+                    <br>
+                    <br>
+
+                    I'm currently working on my next Roblox
+                    experience and constantly improving my skills.
+
+                </p>
+
+            </div>
+
+
+            <div class="reveal">
+
+                <h4>
+                    MY FOCUS
+                </h4>
+
+
+                <div class="skills">
+
+                    <span>Luau</span>
+
+                    <span>Roblox Studio</span>
+
+                    <span>Gameplay Programming</span>
+
+                    <span>Systems</span>
+
+                    <span>Game Mechanics</span>
+
+                    <span>Scripting</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section
+        class="section"
+        id="services"
+    >
+
+        <div class="section-header reveal">
+
+            <span>
+                // SERVICES
+            </span>
+
+            <h2>
+                What I Do
+            </h2>
+
+            <p>
+                Programming services I currently offer.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    +
+                </div>
+
+                <h3>
+                    Gameplay Programming
+                </h3>
+
+                <p>
+                    Custom gameplay mechanics,
+                    interactions and player systems.
+                </p>
+
+                <span class="available">
+                    AVAILABLE
+                </span>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    +
+                </div>
+
+                <h3>
+                    Systems Development
+                </h3>
+
+                <p>
+                    Progression, inventories,
+                    round systems and other Roblox systems.
+                </p>
+
+                <span class="available">
+                    AVAILABLE
+                </span>
+
+            </div>
+
+
+            <div class="service-card reveal">
+
+                <div class="service-icon">
+                    +
+                </div>
+
+                <h3>
+                    Scripting
+                </h3>
+
+                <p>
+                    Custom Luau scripting and
+                    gameplay functionality.
+                </p>
+
+                <span class="available">
+                    AVAILABLE
+                </span>
+
+            </div>
+
+
+            <div class="service-card unavailable reveal">
+
+                <div class="service-icon">
+                    +
+                </div>
+
+                <h3>
+                    Full Game Development
+                </h3>
+
+                <p>
+                    Complete development of an entire
+                    Roblox experience.
+                </p>
+
+                <span>
+                    NOT AVAILABLE RIGHT NOW
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- VFX -->
+
+    <section
+        class="section"
+        id="vfx"
+    >
+
+        <div class="section-header reveal">
+
+            <span>
+                // VFX
+            </span>
+
+            <h2>
+                Visual Effects
+            </h2>
+
+            <p>
+                Custom visual effects created for Roblox experiences.
+            </p>
+
+        </div>
+
+
+        <div class="vfx-grid">
+
+
+            <div class="vfx-card reveal">
+
+                <div class="vfx-image">
+
+                    <img
+                        src="images/vfx1.png"
+                        alt="Roblox VFX 01"
+                    >
+
+                </div>
+
+
+                <div class="vfx-info">
+
+                    <h3>
+                        VFX #01
+                    </h3>
+
+                    <span>
+                        Roblox Visual Effect
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="vfx-card reveal">
+
+                <div class="vfx-image">
+
+                    <img
+                        src="images/vfx2.png"
+                        alt="Roblox VFX 02"
+                    >
+
+                </div>
+
+
+                <div class="vfx-info">
+
+                    <h3>
+                        VFX #02
+                    </h3>
+
+                    <span>
+                        Roblox Visual Effect
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section
+        class="section contact reveal"
+        id="contact"
+    >
+
+        <span>
+            // CONTACT
+        </span>
+
+
+        <h2>
+
+            Let's build
+
+            <br>
+
+            <span>
+                something.
+            </span>
+
+        </h2>
+
+
+        <p>
+            Have a project in mind? Let's talk.
+        </p>
+
+
+        <div class="contact-buttons">
+
+
+            <button
+                class="button secondary"
+                id="discordButton2"
+            >
+
+                <span id="discordIcon2">
+                    Copy Discord
+                </span>
+
+                <span id="discordCopied2">
+                    Copied!
+                </span>
+
+            </button>
+
+
+            <a
+                href="https://www.roblox.com/users/3404609836/profile"
+                target="_blank"
+                class="button primary"
+            >
+                Roblox Profile ↗
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <span>
+        © 2026 Rali
+    </span>
+
+    <span>
+        Roblox Developer
+    </span>
+
+</footer>
+
+
+<script src="script.js"></script>
+```
+
+</body>
+
+</html>

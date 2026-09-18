@@ -38,7 +38,6 @@ CURSOR GLOW
 .cursor-glow {
 position: fixed;
 
-```
 left: 0;
 top: 0;
 
@@ -1137,6 +1136,5 @@ nav {
 .vfx-grid {
     grid-template-columns: 1fr;
 }
-```
 
 }

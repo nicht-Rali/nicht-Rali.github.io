@@ -10,13 +10,11 @@
 <title>Rali | Roblox Developer</title>
 
 <link rel="stylesheet" href="style.css">
-```
 
 </head>
 
 <body>
 
-```
 <!-- CURSOR GLOW -->
 
 <div class="cursor-glow"></div>

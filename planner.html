@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner | Rali</title>
+    <meta name="description" content="Get a rough price estimate in Robux for a Roblox system.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-planner">
+
+    <header class="navbar">
+        <a href="index.html" class="logo">Rali</a>
+
+        <nav class="nav-links" aria-label="Main">
+            <a href="index.html#work">Work</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#vfx">VFX</a>
+            <a href="planner.html" class="active" aria-current="page">Planner</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+
+        <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+            <span></span><span></span>
+        </button>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#vfx">VFX</a>
+        <a href="planner.html">Planner</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <main>
+        <section class="section planner-intro">
+            <h1 class="page-title">Planner</h1>
+            <p class="section-text">
+                Describe the system you want and get a rough price in Robux and an estimated build time.
+                It's a starting point, not a final offer. I'll confirm the exact price once we've talked.
+            </p>
+        </section>
+
+        <section class="planner">
+
+            <form class="planner-form" id="plannerForm" novalidate>
+
+                <fieldset>
+                    <legend>What do you need?</legend>
+                    <div class="options" data-group="type"></div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>How complex is it?</legend>
+                    <div class="options" data-group="complexity"></div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Is it a one-off or long-term?</legend>
+                    <div class="options" data-group="scope"></div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>When do you need it?</legend>
+                    <div class="options" data-group="deadline"></div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Extras</legend>
+                    <div class="options" data-group="extras"></div>
+                </fieldset>
+
+            </form>
+
+            <aside class="planner-result" aria-live="polite">
+                <p class="result-label">Estimated price</p>
+                <p class="result-price" id="resultPrice">-</p>
+                <p class="result-range" id="resultRange"></p>
+
+                <p class="result-label">Estimated time</p>
+                <p class="result-time" id="resultTime">-</p>
+                <p class="result-warning" id="resultWarning" hidden></p>
+
+                <ul class="breakdown" id="breakdown"></ul>
+
+                <button class="button primary full" id="copySummary" type="button">Copy summary for Discord</button>
+                <p class="result-note">
+                    Paste the summary when you message me, so I know what you have in mind.
+                </p>
+            </aside>
+
+        </section>
+    </main>
+
+    <footer>
+        <span>© 2026 Rali</span>
+        <span>Roblox developer from Germany</span>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
